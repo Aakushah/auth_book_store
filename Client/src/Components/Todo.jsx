@@ -2,12 +2,10 @@ import React from 'react'
 import AddTodo from './AddTodo'
 import Todos from './Todos'
 
-const Todo = ({token='hi'}) => {
-
-
+const Todo = () => {
 
   return (
-    <div>
+    <div className='max-w-screen-md mx-auto'>
         
         <AddTodo />
         <Todos />

@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import "./Login.css";
 
-const Login = ({ setToken }) => {
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setToken } from '../../features/authSlice';
+
+
+
+const Login = () => {
+ 
+
+  const token = useSelector((state) => state.auth.token);
+  
+  const dispatch = useDispatch();
+
+
+  //VARIABLE FOR STORING THE TEMPORARY VALUE OF LOGIN CREDENTIALS...
 
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
+
   async function loginUser(credentials) {
     try {
+
       const response = await fetch("http://localhost:8000/login", {
+
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
+
       });
 
       if (!response.ok) {
@@ -22,23 +40,29 @@ const Login = ({ setToken }) => {
 
       const data = await response.json();
       return data;
+
     } catch (error) {
+
       console.error("Error during login:", error);
       throw error;
+
     }
+
+
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const token = await loginUser({
+    const newtoken = await loginUser({
       username,
       password,
     });
 
     
 
-    setToken(token);
+    dispatch(setToken(newtoken));
+
   };
 
   return (

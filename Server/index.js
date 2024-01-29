@@ -7,12 +7,15 @@ app.use(express.json());
 
 app.post('/login', (req, res) => {
 
-   
-
     const { username, password } = req.body;
     const token={username,password};
-    res.send(token);
+    res.send({
+        token
+        
+    });
+    
 });
+
 
 app.listen(8000, () => {
     console.log(`Server is running on port 8000.`);

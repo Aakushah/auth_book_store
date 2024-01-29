@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector,useDispatch} from "react-redux";
 import {removeTodo} from '../features/todoSlice'
 
 const Todos = () => {
@@ -7,9 +7,9 @@ const Todos = () => {
   //use to access data from the store
   const todos = useSelector((state) => state.todo.todos);
 
-  //use to acesss functionalities from the store
-  const dispatch = useDispatch();
 
+  //use to send data to the store
+  const dispatch=useDispatch();
 
   return (
     <>

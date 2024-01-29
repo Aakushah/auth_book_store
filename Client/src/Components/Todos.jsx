@@ -13,7 +13,7 @@ const Todos = () => {
 
   return (
     <>
-      <div>Todos</div>
+      <div className="my-4">Write Your Todo..</div>
       <ul className="list-none">
         {todos.map((todo) => (
           <li
